@@ -6,6 +6,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 CoordMode, Mouse, Client
 
 BreakLoop = 0
+GameWindowTitle = 5.6ICBING
 Gui, Add, Text,, How many boxes to open?
 Gui, Add, Edit
 Gui, Add, UpDown, vRunCount Range1-100000, 1 ym
@@ -38,14 +39,8 @@ GuiControlGet, KeepHasPrio
 GuiControlGet, RunCount
 
 ; First check if game is running and the right size
-WinGet, hwnd,,5.6ICBING
-GetClientSize(hwnd, cWidth, cHeight)
-if (cWidth == 0 && cHeight == 0) {
-    MsgBox,,Error, Please start "I can't believe it's not gambling" first
-    return
-}
-if (cWidth != 1600 || cHeight != 900) {
-    MsgBox,,Error, Your game is running at %w%x%h% - Please set resolution to 1600x900
+WinGet, hwnd,,%GameWindowTitle%
+if (GameIsAccessible(GameWindowTitle) == false) {
     return
 }
 
@@ -68,8 +63,15 @@ Current = %RunCount%
 LoopTimes = %RunCount%
 
 Loop %LoopTimes% {
+
+; Check if the user canceled the Loop
 if (BreakLoop = 1) {
     BreakLoop = 0
+    break
+}
+
+; Make sure the game wasn't closed since last loop
+if (GameIsAccessible(GameWindowTitle) == false) {
     break
 }
 
@@ -96,6 +98,25 @@ GetClientSize(hwnd, ByRef cWidth, ByRef cHeight)
     DllCall("GetClientRect", "uint", hwnd, "uint", &rc)
     cWidth := NumGet(rc, 8, "int")
     cHeight := NumGet(rc, 12, "int")
+}
+
+; Returns false if the game is not running or the wrong size, true otherwise
+; Used to set BreakLoop variable
+; will show a message box with error
+GameIsAccessible(WinTitle) {
+    IfWinNotExist, %WinTitle%
+    {
+        MsgBox,,Error, Please start "I can't believe it's not gambling" first
+        return false
+    }
+    
+    WinGet, currentHwnd,,%WinTitle%
+    GetClientSize(currentHwnd, cWidth, cHeight)
+    if (cWidth != 1600 || cHeight != 900) {
+        MsgBox,,Error, Your game is running at %w%x%h% - Please set resolution to 1600x900
+        return false
+    }
+    return true
 }
 
 ; Main work
