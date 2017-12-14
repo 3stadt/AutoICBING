@@ -1,8 +1,15 @@
+
+![Imgur](https://i.imgur.com/AWcE8dH.png "Interface screenshot")
+
 # Purpose
 
 Automatically open lootboxes in the [game](http://store.steampowered.com/app/733990/I_Cant_Believe_Its_Not_Gambling/) `I can't believe it's not gambling` Version 5.6
 
 Mainly because there is an "open 100000 loot boxes" achievement and nobody got time for that.
+
+# Where to download?
+
+Use the ahk script or download a compiled exe from [release page](https://github.com/3stadt/AutoICBING/releases/).
 
 # What?
 
