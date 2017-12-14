@@ -53,7 +53,7 @@ GuiControl, Disable, RunButton
 GuiControl, Enable, CancelButton
 
 ; Make sure the user knows what will happen
-MsgBox, 1,Last warning, WARNING: Do not touch you mouse after this dialog!`n%RunCount% box(es) will be opened.`nTo cancel at any time press "Ctrl+F12"`nTo start, Press now "Enter" or click "Ok"
+MsgBox, 1,Last warning, WARNING: Do not touch you mouse after this dialog!`n%RunCount% box(es) will be opened.`nTo cancel at any time press "Ctrl+Shift+F12"`nTo start, Press now "Enter" or click "Ok"
 IfMsgBox Cancel
 {
     GuiControl, Enable, RunButton
