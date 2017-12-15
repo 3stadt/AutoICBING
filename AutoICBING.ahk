@@ -40,7 +40,8 @@ GuiControlGet, RunCount
 
 ; First check if game is running and the right size
 WinGet, hwnd,,%GameWindowTitle%
-if (GameIsAccessible(GameWindowTitle) == false) {
+GameRes := GetGameRes(GameWindowTitle)
+if (GameRes == 0) {
     return
 }
 
@@ -70,13 +71,19 @@ if (BreakLoop = 1) {
     break
 }
 
+GameRes := GetGameRes(GameWindowTitle)
+
 ; Make sure the game wasn't closed since last loop
-if (GameIsAccessible(GameWindowTitle) == false) {
+if (GameRes == 0) {
     break
 }
 
 ; Open one box
-OpenBox(hwnd, KeepHasPrio)
+if(GameRes == 1) {
+    OpenBoxInLowRes(hwnd, KeepHasPrio)
+} else {
+    OpenBoxInHiRes(hwnd, KeepHasPrio)
+}
 
 ; Update the form
 Current--
@@ -100,27 +107,67 @@ GetClientSize(hwnd, ByRef cWidth, ByRef cHeight)
     cHeight := NumGet(rc, 12, "int")
 }
 
-; Returns false if the game is not running or the wrong size, true otherwise
+; Returns 0 if the game is not running or the wrong size, 1 if running in LowRes, 2 if running in HiRes
 ; Used to set BreakLoop variable
-; will show a message box with error
-GameIsAccessible(WinTitle) {
+; Will show a message box on error
+GetGameRes(WinTitle) {
     IfWinNotExist, %WinTitle%
     {
         MsgBox,,Error, Please start "I can't believe it's not gambling" first
-        return false
+        return 0
     }
     
     WinGet, currentHwnd,,%WinTitle%
     GetClientSize(currentHwnd, cWidth, cHeight)
-    if (cWidth != 1600 || cHeight != 900) {
-        MsgBox,,Error, Your game is running at %w%x%h% - Please set resolution to 1600x900
-        return false
+    if (cWidth == 1360 && cHeight == 768) {
+        return 1
     }
-    return true
+    if (cWidth == 1600 && cHeight == 900) {
+        return 2
+    }
+    MsgBox,,Error, Your game is running at %cWidth%x%cHeight%`nPlease set resolution to 1600x900 or 1360x768
+    return 0
 }
 
-; Main work
-OpenBox(hwnd, KeepHasPrio) {
+; Main work for 1360x768
+OpenBoxInLowRes(hwnd, KeepHasPrio) {
+    Click, 490 660 ; Click yellow "open loot box" button
+    Sleep 5700 ; Wait loot box to open
+    
+    ; Click all keep buttons first, then remaining sell buttons
+    if (KeepHasPrio = 1) {
+        Click, 1070 515 ; Keep loot, if possible
+        Sleep 400 ; Wait for the game to register the last click
+
+        ; Same for the other three loot boxes:
+
+        Click, 800 520
+        Sleep 400
+
+        Click 500 515
+        Sleep 400
+
+        Click 200 520
+        Sleep 400
+    }
+    
+    Click, 1070 545 ; Sell loot, if possible
+    Sleep 400 ; Wait for the game to register the last click
+    
+    ; Same for the other three loot boxes:
+
+    Click, 800 555
+    Sleep 400
+
+    Click, 505 550
+    Sleep 400
+    
+    Click, 180 555
+    Sleep 400
+}
+
+; Main work for 1600x900
+OpenBoxInHiRes(hwnd, KeepHasPrio) {
     Click, 570 780 ; Click yellow "open loot box" button
     Sleep 5700 ; Wait loot box to open
     

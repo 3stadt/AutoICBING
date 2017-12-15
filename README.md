@@ -19,7 +19,7 @@ Use the ahk script or download a compiled exe from [release page](https://github
 # How?
 
 - You either start the exe or the ahk script if autohotkey is installed
-- You start the [game](http://store.steampowered.com/app/733990/I_Cant_Believe_Its_Not_Gambling/). Windowed, resolution set to 1600x900.
+- You start the [game](http://store.steampowered.com/app/733990/I_Cant_Believe_Its_Not_Gambling/). Windowed, resolution set to either 1600x900 or 1360x768.
 - You set a number of boxes to open.
 - You press "Run"
 - You wait
