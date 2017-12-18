@@ -81,7 +81,10 @@ if (GameRes == 0) {
 ; Open one box
 if(GameRes == 1) {
     OpenBoxInLowRes(hwnd, KeepHasPrio)
-} else {
+} else if(GameRes == 3) {
+    OpenBoxInLowestRes(hwnd, KeepHasPrio)
+}
+else {
     OpenBoxInHiRes(hwnd, KeepHasPrio)
 }
 
@@ -125,8 +128,48 @@ GetGameRes(WinTitle) {
     if (cWidth == 1600 && cHeight == 900) {
         return 2
     }
-    MsgBox,,Error, Your game is running at %cWidth%x%cHeight%`nPlease set resolution to 1600x900 or 1360x768
+    if (cWidth == 1280 && cHeight == 1024) {
+        return 3
+    }
+    MsgBox,,Error, Your game is running at %cWidth%x%cHeight%`nPlease set resolution to 1600x900, 1360x768 or 1280x1024
     return 0
+}
+
+; Main work for 1280x1024
+OpenBoxInLowestRes(hwnd, KeepHasPrio) {
+    Click, 460 780 ; Click yellow "open loot box" button
+    Sleep 5700 ; Wait loot box to open
+    
+    ; Click all keep buttons first, then remaining sell buttons
+    if (KeepHasPrio = 1) {
+        Click, 1190 680 ; Keep loot, if possible
+        Sleep 400 ; Wait for the game to register the last click
+
+        ; Same for the other three loot boxes:
+
+        Click, 820 690
+        Sleep 400
+
+        Click 430 680
+        Sleep 400
+
+        Click 10 690
+        Sleep 400
+    }
+    
+    Click, 1180 710 ; Sell loot, if possible
+    Sleep 400 ; Wait for the game to register the last click
+    
+    ; Same for the other three loot boxes:
+
+    Click, 830 720
+    Sleep 400
+
+    Click, 430 710
+    Sleep 400
+    
+    Click, 50 730
+    Sleep 400
 }
 
 ; Main work for 1360x768
