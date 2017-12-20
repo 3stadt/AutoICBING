@@ -162,7 +162,7 @@ OpenBoxInLowestRes(hwnd, KeepHasPrio) {
     Sleep 400
 
     Click, 570 780 ; Click "Sell All" button
-    Sleep 150 ; Wait for the game to register the last click
+    Sleep 400 ; Wait for the game to register the last click
 }
 
 ; Main work for 1360x768
@@ -192,7 +192,7 @@ OpenBoxInLowRes(hwnd, KeepHasPrio) {
     Sleep 400
 
     Click, 600 670 ; Click "Sell All" button
-    Sleep 150 ; Wait for the game to register the last click
+    Sleep 400 ; Wait for the game to register the last click
 }
 
 ; Main work for 1600x900
@@ -222,5 +222,5 @@ OpenBoxInHiRes(hwnd, KeepHasPrio) {
     Sleep 400
 
 	Click, 750 780 ; Click "Sell All" button
-	Sleep 150 ; Wait for the game to register the last click
+	Sleep 400 ; Wait for the game to register the last click
 }
