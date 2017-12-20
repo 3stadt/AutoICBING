@@ -141,22 +141,26 @@ OpenBoxInLowestRes(hwnd, KeepHasPrio) {
     Sleep 5700 ; Wait loot box to open
     
     ; Click all keep buttons first, then remaining sell buttons
-    if (KeepHasPrio = 1) {
-        Click, 1190 680 ; Keep loot, if possible
-        Sleep 400 ; Wait for the game to register the last click
-
-        ; Same for the other three loot boxes:
-
-        Click, 820 690
-        Sleep 400
-
-        Click 430 680
-        Sleep 400
-
-        Click 10 690
-        Sleep 400
+    if (KeepHasPrio != 1) {
+        Click, 570 780 ; Click "Sell All" button
+        Sleep 150
+        return
     }
     
+    Click, 1190 680 ; Keep loot, if possible
+    Sleep 400 ; Wait for the game to register the last click
+
+    ; Same for the other three loot boxes:
+
+    Click, 820 690
+    Sleep 400
+
+    Click 430 680
+    Sleep 400
+
+    Click 10 690
+    Sleep 400
+
     Click, 1180 710 ; Sell loot, if possible
     Sleep 400 ; Wait for the game to register the last click
     
@@ -178,22 +182,26 @@ OpenBoxInLowRes(hwnd, KeepHasPrio) {
     Sleep 5700 ; Wait loot box to open
     
     ; Click all keep buttons first, then remaining sell buttons
-    if (KeepHasPrio = 1) {
-        Click, 1070 515 ; Keep loot, if possible
-        Sleep 400 ; Wait for the game to register the last click
-
-        ; Same for the other three loot boxes:
-
-        Click, 800 520
-        Sleep 400
-
-        Click 500 515
-        Sleep 400
-
-        Click 200 520
-        Sleep 400
+    if (KeepHasPrio != 1) {
+        Click, 600 670 ; Click "Sell All" button
+        Sleep 150
+        return
     }
     
+    Click, 1070 515 ; Keep loot, if possible
+    Sleep 400 ; Wait for the game to register the last click
+
+    ; Same for the other three loot boxes:
+
+    Click, 800 520
+    Sleep 400
+
+    Click 500 515
+    Sleep 400
+
+    Click 200 520
+    Sleep 400
+
     Click, 1070 545 ; Sell loot, if possible
     Sleep 400 ; Wait for the game to register the last click
     
@@ -212,25 +220,29 @@ OpenBoxInLowRes(hwnd, KeepHasPrio) {
 ; Main work for 1600x900
 OpenBoxInHiRes(hwnd, KeepHasPrio) {
     Click, 570 780 ; Click yellow "open loot box" button
-    Sleep 5700 ; Wait loot box to open
+    Sleep 5500 ; Wait loot box to open
     
     ; Click all keep buttons first, then remaining sell buttons
-    if (KeepHasPrio = 1) {
-        Click, 1280 600 ; Keep loot, if possible
-        Sleep 400 ; Wait for the game to register the last click
-
-        ; Same for the other three loot boxes:
-
-        Click, 960 610
-        Sleep 400
-
-        Click 610 600
-        Sleep 400
-
-        Click 240 610
-        Sleep 400
+    if (KeepHasPrio != 1) {
+        Click, 750 780 ; Click "Sell All" button
+        Sleep 150
+        return    
     }
     
+    Click, 1280 600 ; Keep loot, if possible
+    Sleep 400 ; Wait for the game to register the last click
+
+    ; Same for the other three loot boxes:
+
+    Click, 960 610
+    Sleep 400
+
+    Click 610 600
+    Sleep 400
+
+    Click 240 610
+    Sleep 400
+
     Click, 1300 630 ; Sell loot, if possible
     Sleep 400 ; Wait for the game to register the last click
     
