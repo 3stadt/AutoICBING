@@ -24,7 +24,7 @@ Use the ahk script or download a compiled exe from [release page](https://github
 - You press "Run"
 - You wait
 - You regret the high number of boxes, because your mouse is now in use but you want to rant on some forum.
-- You press `Ctrl+Shit+F12` to cancel the openings. Current opening will finish, then your mouse will be free.
+- You press `Ctrl+Shift+F12` to cancel the openings. Current opening will finish, then your mouse will be free.
 
 If you select to keep loot you may run out of money. Don't do that. You have been warned.
 
