@@ -1,5 +1,5 @@
 
-[![Interface screenshot](https://i.imgur.com/E5qgRJc.png "Interface screenshot")](https://github.com/3stadt/AutoICBING/releases/)
+[![Interface screenshot](https://i.imgur.com/5vyFvyF.png "Interface screenshot")](https://github.com/3stadt/AutoICBING/releases/)
 
 # Purpose
 
