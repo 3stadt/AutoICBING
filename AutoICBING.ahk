@@ -1,4 +1,4 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ;#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -7,13 +7,13 @@ CoordMode, Mouse, Client
 
 BreakLoop = 0
 GameWindowTitle = 5.6ICBING
-Gui, Add, Text,, How many Airlifts to open?
+Gui, Add, Text,, How many boxes to open?
 Gui, Add, Edit
 Gui, Add, UpDown, vRunCount Range1-100000, 1 ym
-Gui, Add, Checkbox, -Wrap vKeepHasPrio, Keep Airlift content if possible?
-Gui, Add, Text,, `nTo open Airlifts, hit "Run" or ctrl+F12`nTo stop, hit "Cancel" or ctrl+shift+F12
+Gui, Add, Checkbox, -Wrap vKeepHasPrio, Keep box content if possible?
+Gui, Add, Text,, `nTo open boxes, hit "Run" or ctrl+F12`nTo stop, hit "Cancel" or ctrl+shift+F12
 Gui, Font, cFF0000
-Gui, Add, Text,, Before You start: make sure you have the`n"Open Airlift" screen ready ingame!
+Gui, Add, Text,, Before You start: make sure you have the`n"Open Loot Box" screen ready ingame!
 Gui, Font,
 Gui, Add, Button, default vRunButton, Run
 Gui, Add, Button, xp+35 vp vCancelButton, Cancel
@@ -49,7 +49,7 @@ GuiControl, Disable, RunButton
 GuiControl, Enable, CancelButton
 
 ; Make sure the user knows what will happen
-MsgBox, 1,Last warning, WARNING: Do not touch you mouse after this dialog!`n%RunCount% Airlift(s) will be opened.`nTo cancel at any time press "Ctrl+Shift+F12"`nTo start, Press now "Enter" or click "Ok"
+MsgBox, 1,Last warning, WARNING: Do not touch you mouse after this dialog!`n%RunCount% box(es) will be opened.`nTo cancel at any time press "Ctrl+Shift+F12"`nTo start, Press now "Enter" or click "Ok"
 IfMsgBox Cancel
 {
     GuiControl, Enable, RunButton
@@ -78,7 +78,7 @@ if (GameRes == 0) {
     break
 }
 
-; Open one Airlift
+; Open one box
 if(GameRes == 1) {
     OpenBoxInLowRes(hwnd, KeepHasPrio)
 } else if(GameRes == 3) {
@@ -137,8 +137,8 @@ GetGameRes(WinTitle) {
 
 ; Main work for 1280x1024
 OpenBoxInLowestRes(hwnd, KeepHasPrio) {
-    Click, 460 780 ; Click yellow "open Airlift" button
-    Sleep 5700 ; Wait Airlift to open
+    Click, 460 780 ; Click yellow "open loot box" button
+    Sleep 5700 ; Wait for box to open
     
     ; Click all keep buttons first, then remaining sell buttons
     if (KeepHasPrio != 1) {
@@ -147,10 +147,10 @@ OpenBoxInLowestRes(hwnd, KeepHasPrio) {
         return
     }
     
-    Click, 1190 680 ; Keep Airlift content, if possible
+    Click, 1190 680 ; Keep box content, if possible
     Sleep 400 ; Wait for the game to register the last click
 
-    ; Same for the other three Airlifts:
+    ; Same for the other three boxes:
 
     Click, 820 690
     Sleep 400
@@ -161,10 +161,10 @@ OpenBoxInLowestRes(hwnd, KeepHasPrio) {
     Click 10 690
     Sleep 400
 
-    Click, 1180 710 ; Sell Airlift content, if possible
+    Click, 1180 710 ; Sell box content, if possible
     Sleep 400 ; Wait for the game to register the last click
     
-    ; Same for the other three Airlifts:
+    ; Same for the other three boxes:
 
     Click, 830 720
     Sleep 400
@@ -178,8 +178,8 @@ OpenBoxInLowestRes(hwnd, KeepHasPrio) {
 
 ; Main work for 1360x768
 OpenBoxInLowRes(hwnd, KeepHasPrio) {
-    Click, 490 660 ; Click yellow "open Airlift" button
-    Sleep 5700 ; Wait Airlift to open
+    Click, 490 660 ; Click yellow "open loot box" button
+    Sleep 5700 ; Wait for box to open
     
     ; Click all keep buttons first, then remaining sell buttons
     if (KeepHasPrio != 1) {
@@ -188,10 +188,10 @@ OpenBoxInLowRes(hwnd, KeepHasPrio) {
         return
     }
     
-    Click, 1070 515 ; Keep Airlift content, if possible
+    Click, 1070 515 ; Keep box content, if possible
     Sleep 400 ; Wait for the game to register the last click
 
-    ; Same for the other three Airlifts:
+    ; Same for the other three boxes:
 
     Click, 800 520
     Sleep 400
@@ -202,10 +202,10 @@ OpenBoxInLowRes(hwnd, KeepHasPrio) {
     Click 200 520
     Sleep 400
 
-    Click, 1070 545 ; Sell Airlift content, if possible
+    Click, 1070 545 ; Sell box content, if possible
     Sleep 400 ; Wait for the game to register the last click
     
-    ; Same for the other three Airlifts:
+    ; Same for the other three boxes:
 
     Click, 800 555
     Sleep 400
@@ -219,8 +219,8 @@ OpenBoxInLowRes(hwnd, KeepHasPrio) {
 
 ; Main work for 1600x900
 OpenBoxInHiRes(hwnd, KeepHasPrio) {
-    Click, 570 780 ; Click yellow "open Airlift" button
-    Sleep 5500 ; Wait Airlift to open
+    Click, 570 780 ; Click yellow "open loot box" button
+    Sleep 5500 ; Wait for box to open
     
     ; Click all keep buttons first, then remaining sell buttons
     if (KeepHasPrio != 1) {
@@ -232,7 +232,7 @@ OpenBoxInHiRes(hwnd, KeepHasPrio) {
     Click, 1280 600 ; Keep loot, if possible
     Sleep 400 ; Wait for the game to register the last click
 
-    ; Same for the other three Airlifts:
+    ; Same for the other three boxes:
 
     Click, 960 610
     Sleep 400
@@ -246,7 +246,7 @@ OpenBoxInHiRes(hwnd, KeepHasPrio) {
     Click, 1300 630 ; Sell loot, if possible
     Sleep 400 ; Wait for the game to register the last click
     
-    ; Same for the other three Airlifts:
+    ; Same for the other three boxes:
 
     Click, 950 640
     Sleep 400
