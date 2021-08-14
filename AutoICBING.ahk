@@ -161,19 +161,8 @@ OpenBoxInLowestRes(hwnd, KeepHasPrio) {
     Click 10 690
     Sleep 400
 
-    Click, 1180 710 ; Sell box content, if possible
-    Sleep 400 ; Wait for the game to register the last click
-    
-    ; Same for the other three boxes:
-
-    Click, 830 720
-    Sleep 400
-
-    Click, 430 710
-    Sleep 400
-    
-    Click, 50 730
-    Sleep 400
+    Click, 570 780 ; Click "Sell All" button
+    Sleep 150
 }
 
 ; Main work for 1360x768
@@ -202,19 +191,8 @@ OpenBoxInLowRes(hwnd, KeepHasPrio) {
     Click 200 520
     Sleep 400
 
-    Click, 1070 545 ; Sell box content, if possible
-    Sleep 400 ; Wait for the game to register the last click
-    
-    ; Same for the other three boxes:
-
-    Click, 800 555
-    Sleep 400
-
-    Click, 505 550
-    Sleep 400
-    
-    Click, 180 555
-    Sleep 400
+    Click, 600 670 ; Click "Sell All" button
+    Sleep 150
 }
 
 ; Main work for 1600x900
@@ -243,17 +221,6 @@ OpenBoxInHiRes(hwnd, KeepHasPrio) {
     Click 240 610
     Sleep 400
 
-    Click, 1300 630 ; Sell loot, if possible
-    Sleep 400 ; Wait for the game to register the last click
-    
-    ; Same for the other three boxes:
-
-    Click, 950 640
-    Sleep 400
-
-    Click, 600 630
-    Sleep 400
-    
-    Click, 230 640
-    Sleep 400
+    Click, 750 780 ; Click "Sell All" button
+    Sleep 150
 }
